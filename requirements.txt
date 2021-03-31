@@ -1,0 +1,4 @@
+matplotlib~=3.3.4
+mplcursors~=0.4
+requests~=2.25.1
+beautifulsoup4~=4.9.3
