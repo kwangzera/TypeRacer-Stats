@@ -52,7 +52,7 @@ def main_scrape():
         # Appending only the last `diff` races to dict
         for i in range(1, len(list_stats)+1, 7):
             date = list_stats[-i-5].text.split(" ")[0]
-            wpm = float(list_stats[-i-4].text)
+            wpm = float(list_stats[-i-4].text.replace(",", ""))
             userdata["wpm"].append(wpm)
             userdata["date"].append(date)
 
