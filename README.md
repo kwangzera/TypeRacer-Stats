@@ -8,3 +8,4 @@ Python program to generate graphs of WPM vs. Race Number and Daily Average WPM
 - Fix up import order
 - More comments and printing program status
 - Add arguments passing
+- Design own theme
