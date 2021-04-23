@@ -1,9 +1,12 @@
-from scraper import *
+from datetime import time, datetime
 from collections import defaultdict
-from datetime import datetime
 from itertools import accumulate
+
+import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import mplcursors
+
+from scraper import *
 
 # Raw data
 data = main_scrape()
@@ -36,7 +39,7 @@ def running_average(n):
     # Invalid positions fill with None
     for _ in range(n-1):
         run_avg.append(None)
-    
+
     # Average of last `n` races, querying with a prefix sum array
     for i in range(n, total_races+1):
         run_avg.append((cum_wpm[i]-cum_wpm[i-n]) / n)
@@ -84,16 +87,15 @@ def scatterplot(x, y):
 
     # Customizing plot area
     color_cycle = ax._get_lines.prop_cycler
-    ax.scatter(x, y, s=10, color=next(color_cycle)['color'], alpha=0.25)
-    ax.plot(x, r_avg, color=next(color_cycle)['color'])
-    ax.legend(labels=[avg_label, "Single Race"], loc='lower right')
+    ax.scatter(x, y, s=10, color=next(color_cycle)["color"], alpha=0.25)
+    ax.plot(x, r_avg, color=next(color_cycle)["color"])
+    ax.legend(labels=[avg_label, "Single Race"], loc="lower right")
     ax.set_axisbelow(True)
 
     # Customizing the Axes
     ax.set_title(f"WPM vs. Race Number for {USERNAME}")
     ax.set_xlabel("Race Number")
     ax.set_ylabel("WPM")
-
 
 def lineplot(x, y):
     """ Function to plot Daily Average WPM line graph """
@@ -104,14 +106,15 @@ def lineplot(x, y):
 
     # Customizing plot area
     ax.plot(x, y, linewidth=0.5)
-    dots = ax.scatter(x, y, color='none')
+    dots = ax.scatter(x, y, color="none")
     ax.set_axisbelow(True)
 
     # Customizing the Axes
     ax.set_title(f"Daily Average WPM for {USERNAME}")
     ax.set_xlabel("Date")
-    ax.tick_params("x", labelrotation=45)  # Add comment later
+    ax.tick_params("x", labelrotation=45)  # Make sure x-axis lables don't collide
     ax.set_ylabel("WPM")
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
 
     # Show annotations on hover
     crs = mplcursors.cursor(dots, hover=True)

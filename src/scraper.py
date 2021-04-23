@@ -1,4 +1,5 @@
 import json
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -44,8 +45,9 @@ def main_scrape():
 
     # By default typeracerdata.com loads the last 20 races when `diff` = 0
     if diff > 0:
-        # Efficient caching - loading only the last `diff` races, cached races won't be loaded again
         print(f"Caching last {diff} races for {USERNAME}")
+
+        # Efficient caching - loading only the last `diff` races, cached races won't be loaded again
         table = soup_all(URL+f"&last={diff}")
         list_stats = table[-2].find_all("td")
 
@@ -59,6 +61,7 @@ def main_scrape():
         # Write new modified userdata contents to file, overwriting previous contents
         with open(PATH, 'w') as file_write:
             json.dump(userdata, file_write)
+
     else:
         print(f"Cached data for {USERNAME} has already is up to date")
 
