@@ -12,6 +12,7 @@ PATH = f"raw\\{USERNAME}.json"
 
 def soup_all(url):
     """ returns a list containing all tables from typeracerdata.com with class=profile """
+
     link = requests.get(url)
     soup = BeautifulSoup(link.content, "html.parser")
     return soup.find_all("table", {"class": "profile"})
