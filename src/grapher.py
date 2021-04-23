@@ -1,3 +1,4 @@
+import sys
 from datetime import time, datetime
 from collections import defaultdict
 from itertools import accumulate
@@ -6,7 +7,7 @@ import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import mplcursors
 
-from scraper import *
+from .scraper import *
 
 # Raw data
 data = main_scrape()
@@ -83,7 +84,7 @@ def scatterplot(x, y):
     fig.tight_layout(pad=6)
 
     # Unpack running average with respective label
-    r_avg, avg_label = which_average(-1)
+    r_avg, avg_label = which_average(int(sys.argv[2]))
 
     # Customizing plot area
     color_cycle = ax._get_lines.prop_cycler

@@ -1,10 +1,11 @@
+import sys
 import json
 
 import requests
 from bs4 import BeautifulSoup
 
 DEFAULT = {"wpm": [], "date": []}
-USERNAME = "username_example125259"
+USERNAME = sys.argv[1]
 URL = f"http://typeracerdata.com/profile?username={USERNAME}"
 PATH = f"raw\\{USERNAME}.json"
 
