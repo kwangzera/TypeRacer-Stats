@@ -17,7 +17,7 @@ This graph displays a scatterplot showing all races of a user. Additionally, a t
 This graph displays a lineplot showing a user's daily average over time. Hovering over a point will show an annotation displaying the user's daily average on a specific date.
 
 ### Passing Arguments
-Running this program requires passing 2 arguments in the order shown below:
+Running this program requires passing 2 arguments shown in the order shown below:
 
 ```bash
 python -m src [TypeRacer Username] [Average of Last n Races]
