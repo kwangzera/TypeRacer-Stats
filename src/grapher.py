@@ -1,5 +1,4 @@
-import sys
-from datetime import time, datetime
+from datetime import datetime
 from collections import defaultdict
 from itertools import accumulate
 
