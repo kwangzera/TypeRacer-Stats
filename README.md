@@ -13,7 +13,7 @@ Once downloaded, double-click `run.bat` to start the program. All necessary libr
 This graph displays a scatterplot showing all races of a user. Additionally, a trendline may be plotted displaying either the running average of the last `n` races or the cumulative average of all races. Hovering over a point does not show an annotation for this graph.
 
 ### Daily Average WPM
-This graph displays a line graph showing a user's daily average over time. Hovering over a point will show an annotation displaying the user's daily average on a specific date.
+This graph displays a line graph showing a user's daily average over time. Hovering over a point will show an annotation displaying the user's daily average on a specific date along with the number of races they did on that date.
 
 ### Passing Arguments
 Running this program requires passing 2 arguments shown in the order shown below:

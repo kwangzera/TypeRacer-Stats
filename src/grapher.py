@@ -89,7 +89,7 @@ def scatterplot(x, y):
     color_cycle = ax._get_lines.prop_cycler
     ax.scatter(x, y, s=10, color=next(color_cycle)["color"], alpha=0.25)
     ax.plot(x, r_avg, color=next(color_cycle)["color"])
-    ax.legend(labels=[avg_label, "Single Race"], loc="lower right")
+    ax.legend(labels=[avg_label, "Single Race"], loc="lower right", frameon=True)
     ax.set_axisbelow(True)
 
     # Customizing the Axes
@@ -119,7 +119,7 @@ def lineplot(x, y):
     # Show annotations on hover
     crs = mplcursors.cursor(dots, hover=True)
     crs.connect("add", lambda sel: sel.annotation.set_text(
-        f"{y[sel.target.index]:.1f} WPM average on {x[sel.target.index].strftime('%Y-%m-%d')}")
+        f"{y[sel.target.index]:.1f} WPM average from {len(avg_of_day[x[sel.target.index]])} race(s) on {x[sel.target.index].strftime('%Y-%m-%d')}")
     )
 
 
