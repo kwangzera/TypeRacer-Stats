@@ -1,5 +1,5 @@
-from datetime import datetime
 from collections import defaultdict
+from datetime import datetime
 from itertools import accumulate
 
 import matplotlib.dates as mdates
