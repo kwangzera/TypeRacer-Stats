@@ -5,7 +5,7 @@ Python program to generate graphs of WPM vs. Race Number and Daily Average WPM f
 ![Daily Average WPM](https://github.com/Togohogo1/TypeRacer-Stats/blob/main/screenshots/Daily_Average_WPM.png)
 
 ### Setup
-This program assumes that the specified user has a [TypeRacer](https://play.typeracer.com/) account along with an imported profile on [typeracerdata.com](http://typeracerdata.com/).
+This program assumes that the specified user has a [TypeRacer](https://play.typeracer.com/) account with at least 1 race.
 
 Once downloaded, double-click `run.bat` to start the program. All necessary libraries will be installed in a virtual environment.
 
