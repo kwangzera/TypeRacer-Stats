@@ -1,5 +1,5 @@
 from collections import defaultdict
-from datetime import datetime
+from datetime import date, datetime
 from itertools import accumulate
 
 import matplotlib.dates as mdates
@@ -9,13 +9,13 @@ import mplcursors
 from .scraper import *
 
 # Raw data
-data = main_scrape()
+data = fetch_and_cache()
 
 # Graphed variables
 wpm = data["wpm"]
-date = [datetime.strptime(i, "%Y-%m-%d") for i in data["date"]]
+utc = [datetime.utcfromtimestamp(utc).date() for utc in data["utc"]]
 wpm_avg = []
-date_avg = []
+utc_avg = []
 cum_avg = []
 run_avg = []
 
@@ -63,15 +63,15 @@ def daily_average():
 
     # My hardcoded TypingClub stats
     if USERNAME == "username_example125259":
-        avg_of_day[datetime(2018, 9, 17)].append(45.0)
-        avg_of_day[datetime(2018, 10, 30)].append(54.0)
-        avg_of_day[datetime(2018, 11, 19)].append(50.0)
+        avg_of_day[date(2018, 9, 17)].append(45.0)
+        avg_of_day[date(2018, 10, 30)].append(54.0)
+        avg_of_day[date(2018, 11, 19)].append(50.0)
 
-    for w, dt in zip(wpm, date):
+    for w, dt in zip(wpm, utc):
         avg_of_day[dt].append(w)
 
     for dt, races in avg_of_day.items():
-        date_avg.append(dt)
+        utc_avg.append(dt)
         wpm_avg.append(sum(races)/len(races))
 
 
@@ -132,5 +132,5 @@ def main_plot():
     print("Graphing plots")
     plt.style.use("seaborn-darkgrid")  # Gridlines comes with the theme
     scatterplot(race_number, wpm)
-    lineplot(date_avg, wpm_avg)
+    lineplot(utc_avg, wpm_avg)
     plt.show()
