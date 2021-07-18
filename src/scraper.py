@@ -64,7 +64,7 @@ def fetch_and_cache():
                 now = loaded[-1]["t"]
                 diff -= tot
 
-                print(f"Caching in progress, {diff} race(s) remaining")
+                print(f"Caching in progress, {diff} remaining")
 
             # Caching data
             for wpm, utc in reversed(fromjson):
@@ -74,6 +74,8 @@ def fetch_and_cache():
         # Write new modified userdata contents to file, overwriting previous contents
         with open(PATH, 'w') as file_write:
             json.dump(userdata, file_write)
+
+        print("Caching complete")
 
     else:
         print(f"Cached data for {USERNAME} is already up to date")
