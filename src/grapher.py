@@ -6,7 +6,7 @@ import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import mplcursors
 
-from .scraper import *
+from .fetcher import *
 
 # Raw data
 data = fetch_and_cache()
